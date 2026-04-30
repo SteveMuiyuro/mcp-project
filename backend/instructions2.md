@@ -1,35 +1,32 @@
-Implement the OpenAI Agents SDK chat integration for Meridian Support AI.
+Update the Next.js frontend for Meridian Support AI.
 
 Reviewer warning:
-The reviewer is sensitive to AI slop. Keep the implementation minimal, clean, explainable, and production-lean. Do not add unused abstractions, fake enterprise features, vague comments, dead files, or hardcoded tool assumptions.
+The reviewer is sensitive to AI slop. Keep the UI clean, modern, minimal, and explainable. Use shadcn-style components already present. Do not add unused components, fake dashboards, or unnecessary animations.
 
 Context:
-This is a customer support chatbot for Meridian Electronics.
-The MCP server exposes tools for products, customers, authentication, orders, and order creation.
+The backend is working:
+- GET /health
+- GET /api/tools
+- POST /api/chat
 
-Available MCP tools:
-- list_products(category?: string, is_active?: boolean)
-- get_product(sku: string)
-- search_products(query: string)
-- get_customer(customer_id: string)
-- verify_customer_pin(email: string, pin: string)
-- list_orders(customer_id?: string, status?: string)
-- get_order(order_id: string)
-- create_order(customer_id: string, items: object[])
+The app is a customer support chatbot for Meridian Electronics.
 
-Task:
-1. Update backend/app/services/agent_service.py to create an OpenAI Agent connected to the MCP server over Streamable HTTP.
-2. Use a cost-effective model such as gpt-4o-mini.
-3. The agent should behave as a Meridian Electronics customer support chatbot.
-4. The agent should use MCP tools when needed and not invent product, customer, or order data.
-5. The agent should ask for email and PIN before accessing customer-specific order history.
-6. The agent should be able to help with product search, product lookup, order history, and order creation.
-7. Update POST /api/chat to call the real agent service.
-8. Handle missing OPENAI_API_KEY or MCP_SERVER_URL with clear errors.
-9. Keep tests mocked. Do not call real OpenAI or real MCP in unit tests.
-10. Run ruff and pytest.
+Frontend requirements:
+1. Brand the app as "Meridian Support AI".
+2. Show a short business-focused subtitle: "AI customer support for product lookup, order history, and ordering."
+3. Show backend status.
+4. Show MCP tools in a compact card.
+5. Provide a chat interface.
+6. Add three suggested demo prompts:
+   - "Get product details for SKU MON-0054."
+   - "Search for computers and summarize available options."
+   - "My email is donaldgarcia@example.net and my PIN is 7912. Verify me and show my order history."
+7. Display assistant responses clearly, preserving line breaks.
+8. Add loading and error states.
+9. Keep it as a single-page app.
+10. Do not add authentication, database, or session memory.
 
 After implementation:
+- Run npm run build.
 - List changed files.
-- State risks/assumptions.
 - Suggest a conventional commit message.
