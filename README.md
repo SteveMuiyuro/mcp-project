@@ -270,8 +270,3 @@ Placeholder entries for the assessment submission:
 - Cloud Run deployment workflow
 - Truthful project README with setup and deployment notes
 
-## References
-
-- Google GitHub Action for auth: https://github.com/google-github-actions/auth
-- Google GitHub Action for Cloud Run deploy: https://github.com/google-github-actions/deploy-cloudrun
-- Cloud Run source deployment docs: https://cloud.google.com/run/docs/deploying-source-code

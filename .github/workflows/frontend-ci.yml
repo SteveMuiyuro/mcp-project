@@ -36,3 +36,5 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: https://meridian-support-backend-156986519612.us-central1.run.app
