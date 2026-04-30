@@ -6,11 +6,26 @@
   color-scheme: light;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Helvetica Neue",
+    "Nimbus Sans",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
 body {
   @apply bg-background text-foreground antialiased;
   background-image:
-    radial-gradient(circle at top left, rgba(245, 158, 11, 0.18), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 1));
+    radial-gradient(circle at top left, rgba(251, 113, 133, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(232, 121, 249, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255, 247, 250, 0.95), rgba(255, 255, 255, 1));
   min-height: 100vh;
 }
-

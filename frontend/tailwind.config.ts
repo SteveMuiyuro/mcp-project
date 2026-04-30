@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(210 16% 82%)",
-        input: "hsl(210 16% 82%)",
-        background: "hsl(210 33% 98%)",
-        foreground: "hsl(222 47% 11%)",
-        primary: "hsl(222 47% 11%)",
-        "primary-foreground": "hsl(210 40% 98%)",
-        muted: "hsl(210 40% 94%)",
-        "muted-foreground": "hsl(215 16% 40%)",
-        accent: "hsl(37 92% 50%)",
-        "accent-foreground": "hsl(222 47% 11%)",
+        border: "oklch(91% 0.025 12)",
+        input: "oklch(91% 0.025 12)",
+        background: "oklch(98.5% 0.015 12)",
+        foreground: "oklch(27.1% 0.105 12.094)",
+        primary: "oklch(64.5% 0.246 16.439)",
+        "primary-foreground": "oklch(98.5% 0.01 12)",
+        muted: "oklch(96.5% 0.02 12)",
+        "muted-foreground": "oklch(45.5% 0.188 13.697)",
+        accent: "oklch(71.2% 0.194 13.428)",
+        "accent-foreground": "oklch(27.1% 0.105 12.094)",
       },
       borderRadius: {
         lg: "1rem",
@@ -26,7 +26,15 @@ const config: Config = {
         sm: "0.5rem",
       },
       fontFamily: {
-        sans: ["ui-sans-serif", "system-ui", "sans-serif"],
+        sans: [
+          '"Avenir Next"',
+          '"Segoe UI"',
+          '"Helvetica Neue"',
+          '"Nimbus Sans"',
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
       },
     },
   },
@@ -34,4 +42,3 @@ const config: Config = {
 };
 
 export default config;
-

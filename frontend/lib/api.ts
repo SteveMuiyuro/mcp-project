@@ -2,11 +2,6 @@ export type HealthResponse = {
   status: string;
 };
 
-export type Tool = {
-  name: string;
-  description: string;
-};
-
 export type ChatResponse = {
   response: string;
 };
@@ -24,7 +19,18 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`Request failed with status ${response.status}`);
+    let message = `Request failed with status ${response.status}`;
+
+    try {
+      const data = (await response.json()) as { detail?: unknown };
+      if (typeof data.detail === "string" && data.detail.trim()) {
+        message = data.detail;
+      }
+    } catch {
+      // Ignore non-JSON error bodies and preserve the status-based fallback message.
+    }
+
+    throw new Error(message);
   }
 
   return response.json() as Promise<T>;
@@ -32,10 +38,6 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export function getHealth(): Promise<HealthResponse> {
   return request<HealthResponse>("/health");
-}
-
-export function getTools(): Promise<Tool[]> {
-  return request<Tool[]>("/api/tools");
 }
 
 export function postChat(message: string): Promise<ChatResponse> {

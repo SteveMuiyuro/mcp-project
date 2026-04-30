@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MCP Product Template",
-  description: "Assessment-ready full-stack template for an MCP-based AI product.",
+  title: "Meridian Support AI",
+  description:
+    "Product lookup, order history, and ordering support powered by Meridian's internal tools.",
 };
 
 export default function RootLayout({
@@ -18,4 +19,3 @@ export default function RootLayout({
     </html>
   );
 }
-

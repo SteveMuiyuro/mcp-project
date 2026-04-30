@@ -9,7 +9,10 @@ type ParagraphProps = React.HTMLAttributes<HTMLParagraphElement>;
 export function Card({ className, ...props }: DivProps) {
   return (
     <div
-      className={cn("rounded-lg border border-border bg-white shadow-sm", className)}
+      className={cn(
+        "rounded-[1.75rem] border border-white/70 bg-white/80 shadow-[0_24px_80px_rgba(76,5,25,0.08)] backdrop-blur",
+        className,
+      )}
       {...props}
     />
   );
