@@ -1,0 +1,46 @@
+name: Deploy Backend to Cloud Run
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - ".github/workflows/deploy-backend-cloud-run.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - id: deploy
+        name: Deploy backend service
+        uses: google-github-actions/deploy-cloudrun@v3
+        with:
+          service: meridian-support-backend
+          region: ${{ vars.GCP_REGION }}
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          source: ./backend
+          env_vars: |-
+            OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+            MCP_SERVER_URL="${{ secrets.MCP_SERVER_URL }}"
+            CORS_ALLOWED_ORIGINS="${{ secrets.CORS_ALLOWED_ORIGINS }}"
+          env_vars_update_strategy: overwrite
+
+      - name: Show deployed URL
+        run: echo "Backend deployed to ${{ steps.deploy.outputs.url }}"

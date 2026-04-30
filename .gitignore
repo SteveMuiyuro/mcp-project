@@ -7,6 +7,10 @@ __pycache__/
 
 backend/.env
 frontend/.env.local
+backend/cloudrun.env.yaml
+gha-creds-*.json
 
 frontend/.next/
 frontend/node_modules/
+.env*
+.env.example
