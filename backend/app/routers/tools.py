@@ -8,4 +8,4 @@ router = APIRouter(prefix="/api", tags=["tools"])
 
 @router.get("/tools", response_model=list[ToolSummary])
 async def list_tools() -> list[ToolSummary]:
-    return discover_tools()
+    return await discover_tools()
